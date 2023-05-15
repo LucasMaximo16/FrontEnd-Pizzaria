@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="principal">
+    <table class="table" *ngIf="itensCarrinho.length > 0">
+        <thead style="text-align: left;">
+          <tr>
+            <th><strong>Nome</strong></th>
+            <th><strong>Preço</strong></th>
+            <th><strong>Descrição</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itensCarrinho">
+            <td style="color: var(--blue); text-decoration: underline;">{{ item.product.name }}</td>
+            <td>{{ item.product.price }} R$</td>
+            <td>{{ item.product.description }}</td>
+        </tbody>
+      </table>
+
+      <div class="button">
+        <button routerLink="/" style="background-color:var(--blue);">voltar</button>
+        <button (click)="adicionarItemPedido()">Adicionar item</button>
+      </div>
+  </div>
+</div>

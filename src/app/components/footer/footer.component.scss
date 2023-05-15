@@ -1,0 +1,21 @@
+.footer{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+  height: auto;
+  min-height: 10vh;
+  display: flex;
+  background-color: chartreuse;
+  padding: 8px;
+
+  button{
+    padding: 8px 16px;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 8px;
+  }
+}
+

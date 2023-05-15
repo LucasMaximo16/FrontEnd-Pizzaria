@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div class="principal">
+    <img src="../../../assets/images/Group 183.svg" alt="">
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="email" placeholder="insira o seu email" [(ngModel)]="loginDTO.email" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="Insira a sua senha" [(ngModel)]="loginDTO.password">
+    </div>
+    <button (click)="login()">Login</button>
+  </div>
+</div>

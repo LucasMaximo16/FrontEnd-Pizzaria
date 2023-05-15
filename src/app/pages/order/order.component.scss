@@ -1,0 +1,51 @@
+.container{
+  width: 100%;
+  min-height: 80vh;
+  padding: 30px 70px ;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 12px;
+
+  div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 150%;
+  }
+
+  .mat-expansion-panel {
+    /* box-sizing: content-box; */
+    display: flex;
+    margin: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 12px;
+    background-color: white;
+    gap: 12px
+  }
+
+  .mat-expansion-panel-content {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    padding: 12px;
+  }
+
+  .mat-expansion-panel-body {
+    padding: none;
+  }
+
+  .itemPedido{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

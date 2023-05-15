@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="principal">
+      <table class="table" *ngIf="itensCarrinho.length > 0">
+        <thead style="text-align: left;">
+          <tr>
+            <th><strong>Nome</strong></th>
+            <th><strong>Preço</strong></th>
+            <th><strong>Descrição</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itensCarrinho">
+            <td style="color: var(--blue); text-decoration: underline;">{{ item.product.name }}</td>
+            <td>{{ item.product.price }} R$</td>
+            <td>{{ item.product.description }}</td>
+        </tbody>
+      </table>
+    </div>
+    <div class="finalizarPedido">
+      <button style="background-color: var(--blue);">
+        Voltar
+      </button>
+      <button
+      (click)="enviarPedido(itensCarrinho[0].order.id)"
+      style="background-color: var(--green400);">
+        Enviar Pedido
+      </button>
+    </div>
+</div>
+<!-- <h2>Itens no carrinho:</h2>
+<ul>
+  <li *ngFor="let item of itensCarrinho">
+    {{ item.name }} - {{ item.price }} - {{ item.description }}
+  </li>
+</ul> -->

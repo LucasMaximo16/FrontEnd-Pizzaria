@@ -1,0 +1,27 @@
+<div class="container">
+  <div *ngFor="let product of products" class="containerProduct">
+    <div class="imageProduct">
+      <img src="{{ product.banner }}" alt="{{ product.name }}">
+    </div>
+    <div class="productDetail">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <p style="font-size: larger; font-weight: 700;">{{product.price}} R$</p>
+      <div class="button">
+        <button (click)="adicionarAoCarrinho(product)">
+          <span class="material-symbols-outlined">
+          add_circle
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="FinalizarCompra" *ngIf="(carrinho$ | async)?.length ?? 0 > 0">
+    <button *ngIf="(carrinho$ | async)?.length ?? 0 > 0" (click)="finalizarCompra()">
+        Finalizar Pedido
+      <!-- <span class="material-symbols-outlined">
+        shopping_cart_checkout
+      </span> -->
+    </button>
+</div>

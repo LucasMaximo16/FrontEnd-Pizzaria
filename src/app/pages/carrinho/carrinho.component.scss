@@ -1,0 +1,56 @@
+.container{
+  width: 100%;
+  min-height: 80vh;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 20px 120px;
+
+  .principal{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    td,
+    th {
+      padding: 0.813rem 1rem;
+      border-bottom: 1px solid #d0e0e3;
+      text-align: left;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f6f9f9;
+    }
+  }
+
+  .finalizarPedido{
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+
+    button{
+      padding: 9px 12px;
+      border-radius: 4px;
+      box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+      color: var(--white);
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="Title">
+    <h2>Mesas</h2>
+  </div>
+  <div class="abrirMesa">
+    <input type="text" name="mesa" [(ngModel)]="novaMesa.name" placeholder="Insira o nome do garçom">
+    <input type="number" name="mesa" [(ngModel)]="novaMesa.table" placeholder="Insira o número da mesa">
+    <button (click)="abrirMesa()" >
+      Abrir Mesa
+    </button>
+  </div>
+  <div class="principal">
+    <div *ngFor="let item of mesas" class="mesas">
+      <div class="MesaView">
+        <span class="material-symbols-outlined" style="font-size: 50px;">
+          table_restaurant
+        </span>
+        <h4><strong>Mesa </strong>{{item.table}}</h4>
+        <p>{{item.nmae}}</p>
+      </div>
+      <div class="OptionsContainer">
+        <button class="options"(click)="detalhesPedido(item.id)">
+          <p>Pedidos</p>
+        </button>
+        <button class="options">
+          <p>Transferir Mesa</p>
+        </button>
+        <button class="options">
+          <p>Alterar Garçom</p>
+        </button>
+        <button class="options">
+          <p>Conta</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

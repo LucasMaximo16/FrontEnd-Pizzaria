@@ -1,0 +1,80 @@
+// /* You can add global styles to this file, and also import other style files */
+// @use './_util';
+
+:root{
+
+  --black900: #18181b;
+
+  --white900: #D9D9D9;
+  --white: #FFFF;
+
+  --blue: #005CA9;
+  --blue200: #8FB5BC;
+  --blue800:#004075;
+
+  --orange: #F39200;
+
+  --gray100: #4E6178;
+
+  --gray90: #AFCACF;
+
+  --green400: #008254;
+
+  --red:#F50000;
+
+  --red900:#C20000;
+
+  --yelow:#EAB308
+;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html{
+  height: 100%;
+  font-family: Futura Md BT,Arial, Helvetica, sans-serif;
+  line-height: 140%;
+}
+
+body{
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background-color: var(--white900);
+
+  .mat-expansion-panel-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 12px;
+    background-color: rgba($color: #000000, $alpha: 0.077653456);
+    border-radius: 4px;
+  }
+}
+
+input,body,button,textarea{
+  font-size: 16px;
+}
+
+input{
+  border: 0;
+  outline: 0;
+}
+
+button{
+  cursor: pointer;
+  border: 0;
+}
+
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

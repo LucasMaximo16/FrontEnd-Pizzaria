@@ -1,0 +1,15 @@
+<div class="container">
+  <mat-expansion-panel class="Principal" *ngFor="let item of orders; let i = index" hideToggle (opened)="panelOpenState = true; getItensPedido(item.id)" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Mesa: {{item.table}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Novo Pedido
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div *ngFor="let itemPedido of item.itens">
+      <p>{{itemPedido.product.name}}</p>
+    </div>
+  </mat-expansion-panel>
+</div>
