@@ -1,0 +1,33 @@
+.Container{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  width: 100%;
+
+  h1{
+    color: var(--blue);
+    margin: 0 0 25px 0 ;
+  }
+
+  p{
+    padding: 0px 25px;
+    text-align: justify;
+  }
+}
+.close{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: row;
+    width: 100%;
+  button{
+    background-color: var(--white900);
+
+    mat-icon{
+      color: var(--gray100);
+      background-color: var(--white900);
+    }
+  }
+}

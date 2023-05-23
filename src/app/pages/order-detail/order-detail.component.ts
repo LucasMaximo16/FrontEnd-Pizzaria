@@ -1,6 +1,7 @@
+import { ItemCarrinhoDTO } from './../../DTO/itensCarrinho.dto';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ItemCarrinhoDTO } from 'src/app/DTO/itensCarrinho.dto';
+import { Socket, io } from 'socket.io-client';
 import { CarrinhoServiceService } from 'src/app/service/CarrinhoService/carrinho-service.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class OrderDetailComponent implements OnInit {
   OrderId : string = ""
   itensCarrinho: ItemCarrinhoDTO[] = [];
   OrderItens : ItemCarrinhoDTO[] =[]
+  socket?: Socket;
+
   constructor(private route: ActivatedRoute,
               private carrinhoService : CarrinhoServiceService,
               private router : Router) { }
@@ -22,14 +25,37 @@ export class OrderDetailComponent implements OnInit {
       this.OrderId = params.get('idOrder') || "";
       this.buscarPedidosMesa(this.OrderId);
     });
+
+    this.socket = io('http://localhost:3333');
+    if (this.socket) {
+      this.socket.on('connect', () => {
+        console.log(this.socket);
+        console.log('Conexão com WebSocket estabelecida');
+      });
+    }
+
+    this.socket.on('connect', () => {
+      console.log('Conexão estabelecida com sucesso!');
+    });
+
+    this.socket.on('disconnect', () => {
+      console.log('Conexão perdida!');
+    });
   }
 
   buscarPedidosMesa(idOrder : string){
-    idOrder = this.OrderId
     this.carrinhoService.getItensCarrinho(idOrder).subscribe(response => {
       console.log(response);
       this.itensCarrinho = response
     })
+  }
+
+  deleteItem(item: ItemCarrinhoDTO) {
+    console.log(item.id, "Id Item");
+    this.carrinhoService.deleteItem(item).subscribe(response => {
+      console.log(response);
+      this.itensCarrinho = this.itensCarrinho.filter(orderItem => orderItem.id !== item.id);
+    });
   }
 
   adicionarItemPedido(){

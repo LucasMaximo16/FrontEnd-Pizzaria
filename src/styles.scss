@@ -1,5 +1,8 @@
 // /* You can add global styles to this file, and also import other style files */
 // @use './_util';
+@import '../src/app/primeng-sass-theme-15.4.1/themes/lara/lara-light/blue/theme.scss';
+@import "../node_modules/primeicons/primeicons.css";
+
 
 :root{
 
@@ -71,10 +74,5 @@ button{
   cursor: pointer;
   border: 0;
 }
-
-
-
-
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

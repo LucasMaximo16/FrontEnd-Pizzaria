@@ -1,4 +1,10 @@
 <div class="container">
+  <p-toast></p-toast>
+  <div *ngFor="let message of messages">
+  <div *ngIf="message.severity === 'success'">
+    {{ message.summary }} - {{ message.detail }}
+  </div>
+</div>
   <div class="Title">
     <h2>Mesas</h2>
   </div>
@@ -8,6 +14,7 @@
     <button (click)="abrirMesa()" >
       Abrir Mesa
     </button>
+
   </div>
   <div class="principal">
     <div *ngFor="let item of mesas" class="mesas">
@@ -16,7 +23,7 @@
           table_restaurant
         </span>
         <h4><strong>Mesa </strong>{{item.table}}</h4>
-        <p>{{item.nmae}}</p>
+        <p>{{item.name}}</p>
       </div>
       <div class="OptionsContainer">
         <button class="options"(click)="detalhesPedido(item.id)">
@@ -28,10 +35,42 @@
         <button class="options">
           <p>Alterar Garçom</p>
         </button>
-        <button class="options">
+        <button class="options" (click)="showDialog(item.id)">
           <p>Conta</p>
         </button>
       </div>
     </div>
   </div>
+</div>
+
+<!-- MODAL -->
+<div class="card flex justify-content-center">
+    <p-dialog header="Conta" [(visible)]="visible" [modal]="true" [style]="{ width: '70vw' }" [draggable]="false" [resizable]="false">
+       <table class="table" *ngIf="itensCarrinho.length > 0">
+        <thead style="text-align: left;">
+          <tr>
+            <th><strong>Nome</strong></th>
+            <th><strong>Preço</strong></th>
+            <th><strong>Quantidade</strong></th>
+            <th><strong>Descrição</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itensCarrinho">
+            <td style="color: var(--blue); text-decoration: underline;">{{ item.product.name }}</td>
+            <td>{{ item.product.price }} R$</td>
+            <td>{{ item.amount }}</td>
+            <td>{{ item.product.description }}</td>
+          </tbody>
+        </table>
+        <div class="FecharConta">
+          <div style="display: flex; align-items: flex-start; flex-direction: row; gap: 8px;">
+            <p>Total:</p>
+            <p style="color: black; font-weight: 700;">{{ valorTotal }} R$</p>
+          </div>
+            <button class="FinalizarPagamento" (click)="fecharConta(itensCarrinho[0].order_id)">
+              Fechar Conta
+            </button>
+        </div>
+    </p-dialog>
 </div>

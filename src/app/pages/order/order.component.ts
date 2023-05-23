@@ -60,7 +60,7 @@ export class OrderComponent implements OnInit {
     this.pedidoSerivice.getPedidosMesa(orderId).subscribe(response => {
       console.log(response);
       const pedido = Object.values(response);
-      console.log(pedido);
+      console.log(pedido, "aquii");
       const mesa = this.orders.find(m => m.id === orderId);
       if (mesa) {
         mesa.itens = pedido;

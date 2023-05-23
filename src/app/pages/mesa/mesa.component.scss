@@ -83,3 +83,39 @@
     }
   }
 }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  td,
+  th {
+    padding: 0.813rem 1rem;
+    border-bottom: 1px solid #d0e0e3;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f6f9f9;
+  }
+}
+
+.FecharConta{
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px;
+
+  p{
+    font-size: 20px;
+    color: var(--gray100);
+  }
+
+  button{
+    padding: 10px 12px;
+    color: var(--white);
+    background-color: var(--green400);
+    border-radius: 4px;
+  }
+}

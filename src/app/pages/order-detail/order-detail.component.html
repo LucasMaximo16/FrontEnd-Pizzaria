@@ -6,6 +6,7 @@
             <th><strong>Nome</strong></th>
             <th><strong>Preço</strong></th>
             <th><strong>Descrição</strong></th>
+            <th><strong></strong></th>
           </tr>
         </thead>
         <tbody>
@@ -13,6 +14,12 @@
             <td style="color: var(--blue); text-decoration: underline;">{{ item.product.name }}</td>
             <td>{{ item.product.price }} R$</td>
             <td>{{ item.product.description }}</td>
+            <td>{{ item.product.description }}</td>
+            <td>
+              <button (click)="deleteItem(item)">
+                <i class="pi pi-trash" style="font-size: 1.5rem; background-color: var(--white);"></i>
+              </button>
+            </td>
         </tbody>
       </table>
 

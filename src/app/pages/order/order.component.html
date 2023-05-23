@@ -8,8 +8,9 @@
         Novo Pedido
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div *ngFor="let itemPedido of item.itens">
+    <div class="itemPedido" *ngFor="let itemPedido of item.itens">
       <p>{{itemPedido.product.name}}</p>
+      <p>{{itemPedido.product.created_at}}</p>
     </div>
   </mat-expansion-panel>
 </div>

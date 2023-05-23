@@ -1,15 +1,28 @@
 
 <div class="container">
   <div class="principal">
-    <img src="../../../assets/images/Group 183.svg" alt="">
-    <div>
-      <label for="email">Email</label>
-      <input type="email" name="email" placeholder="insira o seu email" [(ngModel)]="loginDTO.email" required>
+    <div class="container-left">
+      <h2>Olá, Bem vindo ao Bela Pizza!</h2>
+      <span class="material-symbols-outlined" style="font-size: 60px;">lunch_dining</span>
     </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" placeholder="Insira a sua senha" [(ngModel)]="loginDTO.password">
+    <div class="container-right">
+      <img src="../../../assets/images/Group 183.svg" alt="">
+      <div>
+        <span class="material-symbols-outlined" style="font-size: 32.5px; background-color:white; border-radius: 4px; padding: 2px;">person</span>
+        <div class="password">
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="insira o seu email" [(ngModel)]="loginDTO.email" required>
+        </div>
+      </div>
+      <div>
+        <span class="material-symbols-outlined"  style="font-size: 32.5px; background-color:white; border-radius: 4px; padding: 2px;">key</span>
+        <div class="password">
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="Insira a sua senha" [(ngModel)]="loginDTO.password">
+        </div>
+      </div>
+      <p-toast></p-toast>
+      <button (click)="login()">Login</button>
     </div>
-    <button (click)="login()">Login</button>
   </div>
 </div>

@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ItemCarrinhoDTO } from 'src/app/DTO/itensCarrinho.dto';
+import { AuthService } from 'src/app/auth/auth.service';
 
 export interface Pedido{
   mesa : number,
@@ -17,7 +18,8 @@ export class PedidoServiceService {
   private pedidosPendentes: ItemCarrinhoDTO[] = [];
   private pedidosPendentesSubject = new BehaviorSubject<ItemCarrinhoDTO[]>([]);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private authService : AuthService) { }
 
   adicionarPedido(pedido: ItemCarrinhoDTO) {
     this.pedidosPendentes.push(pedido);
@@ -29,6 +31,8 @@ export class PedidoServiceService {
   }
 
   getPedidosMesa(idOrder  : string) : Observable<ItemCarrinhoDTO>{
-    return this.http.get<ItemCarrinhoDTO>(this.apiUrl + "order/detail/" + idOrder)
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<ItemCarrinhoDTO>(this.apiUrl + "order/detail/" + idOrder, {headers:headers})
   }
 }

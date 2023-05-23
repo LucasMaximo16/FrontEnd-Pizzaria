@@ -1,25 +1,26 @@
-import { Component } from '@angular/core';
-import { FooterComponent } from './components/footer/footer.component';
-import { ApiService } from './service/api.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'pizzaria-project';
+export class AppComponent implements OnInit {
+  paginaAtual: string = '';
+  showHeader = true;
+  @Input() mostrarMenu: boolean = false;
 
-  showButton = false;
+  constructor(private router: Router, private route: ActivatedRoute, private login: AuthService,) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.login.isLogin.subscribe(mostrar => {
+      console.log("entrei");
+      console.log(mostrar);
+      this.mostrarMenu = mostrar
+    })
   }
-
-  onItemSelected(event: boolean) {
-    this.showButton = event;
-  }
-
-
 }
