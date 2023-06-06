@@ -8,6 +8,16 @@
   justify-content: flex-start;
   flex-direction: column;
   gap: 30px;
+
+  .title{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid #F8FAFC;
+    // color: var(--);
+  }
   // grid-template-columns: repeat(2, 399px);
 
   .abrirMesa{

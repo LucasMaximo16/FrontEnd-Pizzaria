@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MessagesModule } from 'primeng/messages';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 
 
@@ -52,6 +53,7 @@ import { ButtonModule } from 'primeng/button';
     MatExpansionModule,
     MatIconModule,
     DialogModule,
+    DividerModule,
     BrowserAnimationsModule,
   ],
   exports: [
