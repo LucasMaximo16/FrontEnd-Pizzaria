@@ -17,7 +17,7 @@ export interface Product {
 })
 export class CarrinhoServiceService {
 
-  private apiUrl = 'http://localhost:3333/';
+  private apiUrl = "https://projeto-bela-pizza-backend.onrender.com";
   constructor(private http: HttpClient,
     private authService : AuthService) { }
 

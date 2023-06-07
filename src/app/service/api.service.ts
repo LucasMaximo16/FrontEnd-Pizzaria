@@ -10,7 +10,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:3333/';
+  private apiUrl = "https://projeto-bela-pizza-backend.onrender.com";
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 

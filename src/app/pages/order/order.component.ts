@@ -27,7 +27,7 @@ export class OrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.socket = io('http://localhost:3333');
+    this.socket = io("https://projeto-bela-pizza-backend.onrender.com");
     if (this.socket) {
       this.socket.on('connect', () => {
         console.log(this.socket);
