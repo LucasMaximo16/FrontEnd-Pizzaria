@@ -14,7 +14,7 @@ export interface Pedido{
   providedIn: 'root'
 })
 export class PedidoServiceService {
-  private apiUrl: string = "https://projeto-bela-pizza-backend.onrender.com"
+  private apiUrl: string = "https://projeto-bela-pizza-backend.onrender.com/"
   private pedidosPendentes: ItemCarrinhoDTO[] = [];
   private pedidosPendentesSubject = new BehaviorSubject<ItemCarrinhoDTO[]>([]);
 
