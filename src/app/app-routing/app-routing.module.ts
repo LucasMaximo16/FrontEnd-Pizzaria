@@ -9,6 +9,8 @@ import { OrderComponent } from '../pages/order/order.component';
 import { OrderDetailComponent } from '../pages/order-detail/order-detail.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { AuthGuard } from '../auth/authGuard/auth-guard.service';
+import { ProductComponent } from '../pages/product/product.component';
+import { CategoriaComponent } from '../pages/categoria/categoria.component';
 
 const routes: Routes = [
 
@@ -22,7 +24,11 @@ const routes: Routes = [
 
   { path: 'carrinho', component: CarrinhoComponent, canActivate: [AuthGuard] },
 
-  { path: 'pedidos', component: OrderComponent, canActivate: [AuthGuard] }
+  { path: 'pedidos', component: OrderComponent, canActivate: [AuthGuard] },
+
+  { path: 'produto', component: ProductComponent, canActivate: [AuthGuard] },
+
+  { path: 'categoria', component: CategoriaComponent, canActivate: [AuthGuard] }
 
 ];
 

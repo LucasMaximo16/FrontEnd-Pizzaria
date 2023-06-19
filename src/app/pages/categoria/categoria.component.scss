@@ -1,0 +1,26 @@
+.container{
+  width: 100%;
+  min-height: 80vh;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  gap: 12px;
+
+  padding: 50px 120px 0 ;
+
+  input{
+    width: 70%;
+    padding: 12px;
+    border-radius:4px ;
+  }
+
+  button{
+    // width: 30%;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: green;
+    color: var(--white);
+  }
+}

@@ -5,6 +5,9 @@ import { io } from 'socket.io-client';
 import { ItemCarrinhoDTO } from 'src/app/DTO/itensCarrinho.dto';
 import { CarrinhoServiceService, Product } from 'src/app/service/CarrinhoService/carrinho-service.service';
 import { PedidoServiceService } from 'src/app/service/PedidoService/pedido-service.service';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
 
 @Component({
   selector: 'app-carrinho',
@@ -69,6 +72,7 @@ export class CarrinhoComponent implements OnInit {
         console.log("+++++++++++++++++++++");
 
         this.socket?.emit('novo-pedido', response);
+        // this.gerarPedidoPDF()
         this.router.navigate(['/']);
       },
       error: (error: Error) => {
@@ -78,4 +82,55 @@ export class CarrinhoComponent implements OnInit {
 
     this.carrinhoService.enviarPedido(orderId).subscribe(observer);
   }
+
+  //GERAR PDF E IMPRIMIR
+  // gerarPedidoPDF() {
+  //   // Defina o conteúdo do pedido
+  //   const conteudoPedido = this.itensCarrinho.map(item => [item.order.table, item.product.name, item.product.price].join(', ')).join('\n');
+
+  //   // Carregue as fontes manualmente
+  //   const loadFonts = async () => {
+  //     const { RobotoRegular, RobotoMedium, RobotoItalic, RobotoMediumItalic } = await import('./Roboto/Roboto');
+
+  //     pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+  //     pdfMake.fonts = {
+  //       Roboto: {
+  //         normal: RobotoRegular.default || RobotoRegular,
+  //         bold: RobotoMedium.default || RobotoMedium,
+  //         italics: RobotoItalic.default || RobotoItalic,
+  //         bolditalics: RobotoMediumItalic.default || RobotoMediumItalic
+  //       }
+  //     };
+  //   };
+
+  //   // Defina o documento PDF
+  //   const documentoPDF = {
+  //     content: [
+  //       { text: 'Pedido', style: 'header' },
+  //       { text: conteudoPedido, style: 'content' }
+  //     ],
+  //     styles: {
+  //       header: { fontSize: 18, bold: true, marginBottom: 20 },
+  //       content: { fontSize: 14 }
+  //     }
+  //   };
+
+  //   // Carregue as fontes
+  //   loadFonts().then(() => {
+  //     // Gere o PDF
+  //     const pdfDocGenerator = pdfMake.createPdf(documentoPDF);
+
+  //     // Envie o PDF para impressão
+  //     pdfDocGenerator.getBuffer((buffer) => {
+  //       const blob = new Blob([buffer], { type: 'application/pdf' });
+  //       const url = URL.createObjectURL(blob);
+  //       const iframe = document.createElement('iframe');
+  //       iframe.style.display = 'none';
+  //       iframe.src = url;
+  //       document.body.appendChild(iframe);
+  //       iframe.contentWindow?.print();
+  //     });
+  //   });
+  // }
 }

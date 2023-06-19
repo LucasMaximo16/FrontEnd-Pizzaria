@@ -78,9 +78,9 @@ export class MesaComponent implements OnInit {
     return valorTotal;
   }
 
-  fecharConta(orderId : string){
-    this.api.fecharMesa(orderId).subscribe(result => {
-      console.log(result);
-    })
+  fecharConta(orderId: string) {
+    this.api.fecharMesa(orderId).subscribe((result) => {
+      location.reload(); // Recarrega a página após a resposta bem-sucedida da requisição
+    });
   }
 }

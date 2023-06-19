@@ -25,6 +25,8 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
+import { ProductComponent } from './pages/product/product.component';
+import { CategoriaComponent } from './pages/categoria/categoria.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { ButtonModule } from 'primeng/button';
     OrderDetailComponent,
     LoginComponent,
     ModalFinalizarPedidoComponent,
+    ProductComponent,
+    CategoriaComponent,
   ],
   imports: [
     CommonModule,
