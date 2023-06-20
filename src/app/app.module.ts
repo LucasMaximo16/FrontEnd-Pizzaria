@@ -28,6 +28,9 @@ import { ButtonModule } from 'primeng/button';
 import { ProductComponent } from './pages/product/product.component';
 import { CategoriaComponent } from './pages/categoria/categoria.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ApiService } from './service/api.service';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -61,11 +64,12 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     DividerModule,
     BrowserAnimationsModule,
     ConfirmDialogModule,
+    ReactiveFormsModule
   ],
   exports: [
     LoginComponent,
   ],
-  providers: [CookieService, LoginComponent, OrderDetailComponent, MessagesModule, MessageService, ConfirmationService, DatePipe],
+  providers: [CookieService, LoginComponent, OrderDetailComponent, MessagesModule, MessageService, ConfirmationService, DatePipe, ReactiveFormsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

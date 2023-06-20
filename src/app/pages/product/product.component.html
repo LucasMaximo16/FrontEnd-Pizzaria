@@ -1,1 +1,19 @@
-<p>product works!</p>
+<form class="container">
+  <div class="file"   [style.background-image]="'url(' + imagemSelecionadaUrl + ')'">
+    <input type="file" (change)="onFileSelected($event)">
+    <span class="material-symbols-outlined">
+      download
+    </span>
+  </div>
+  <select name="categorias" id="categorias"[(ngModel)]="option">
+    <option *ngFor="let item of Categorylist" [ngValue]="item.id">
+      {{ item.name }}
+    </option>
+  </select>
+  <input type="text" [(ngModel)] = "name" name="name"  placeholder="Nome do Produto">
+  <input type="text" [(ngModel)] = "price" name="price" placeholder="Preço do Produto">
+  <textarea [(ngModel)] = "description" name="description" placeholder="Descreva o produto"></textarea>
+  <button (click)="onSubmit()">
+    Salvar
+  </button>
+</form>

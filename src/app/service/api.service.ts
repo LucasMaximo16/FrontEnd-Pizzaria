@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { OrderTable } from '../DTO/OrderTable.dto';
 import { LoginDTO } from '../DTO/login.dto';
 import { AuthService } from '../auth/auth.service';
+import { CreateProductDTO } from '../DTO/CreateProductDTO.dto';
 
 interface ApiResponse {
   status:number
@@ -59,6 +60,25 @@ export class ApiService {
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(this.apiUrl + 'category/', {name:name}, { headers: headers })
+  }
+  createProduct(obj:CreateProductDTO){
+    const response = {
+      name: obj.name,
+      banner: obj.banner,
+      description: obj.description,
+      price: obj.price,
+      category_id: obj.category_id
+    }
+
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.apiUrl + 'product/', response, { headers: headers })
+  }
+
+  getCategory(){
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(this.apiUrl + 'category/',{headers: headers})
   }
 
 
