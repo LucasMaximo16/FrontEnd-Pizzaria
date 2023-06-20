@@ -12,6 +12,7 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent implements OnInit {
   paginaAtual: string = '';
   showHeader = true;
+
   @Input() mostrarMenu: boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute, private login: AuthService,) { }

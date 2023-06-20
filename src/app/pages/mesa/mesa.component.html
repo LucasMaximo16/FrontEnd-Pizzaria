@@ -63,7 +63,8 @@
             <p>Total:</p>
             <p style="color: black; font-weight: 700;">{{ valorTotal }} R$</p>
           </div>
-            <button class="FinalizarPagamento" (click)="fecharConta(itensCarrinho[0].order_id)">
+            <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+            <button class="FinalizarPagamento" (click)="confirm1(itensCarrinho[0].order_id)">
               Fechar Conta
             </button>
         </div>

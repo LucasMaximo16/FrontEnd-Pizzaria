@@ -9,6 +9,7 @@ import { MesaDTO } from 'src/app/DTO/mesa.dto';
 import { OrderDetailComponent } from '../order-detail/order-detail.component';
 import { ItemCarrinhoDTO } from 'src/app/DTO/itensCarrinho.dto';
 import { CarrinhoServiceService } from 'src/app/service/CarrinhoService/carrinho-service.service';
+import { ConfirmEventType, ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-mesa',
@@ -30,6 +31,7 @@ export class MesaComponent implements OnInit {
                public dialog: MatDialog,
                private order: OrderDetailComponent,
                private carrinhoService: CarrinhoServiceService,
+              private confirmationService: ConfirmationService
 ) { }
 
   ngOnInit(): void {
@@ -81,6 +83,28 @@ export class MesaComponent implements OnInit {
   fecharConta(orderId: string) {
     this.api.fecharMesa(orderId).subscribe((result) => {
       location.reload(); // Recarrega a página após a resposta bem-sucedida da requisição
+    });
+  }
+
+  confirm1(orderId: string) {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja concluir o pagamento ?',
+      header: 'Concluir Pagamento',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.fecharConta(orderId);
+        // this.messageService.add({ severity: 'Success', summary: 'Deletado', detail: 'Mesa Deletada com sucesso' });
+      },
+      reject: (type: ConfirmEventType) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            // this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+            break;
+          case ConfirmEventType.CANCEL:
+            // this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'You have cancelled' });
+            break;
+        }
+      }
     });
   }
 }

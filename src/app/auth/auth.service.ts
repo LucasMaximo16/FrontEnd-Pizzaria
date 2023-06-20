@@ -1,14 +1,19 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { EventEmitter, Injectable, Output, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit{
+  @Output() isLogin = new EventEmitter<boolean>(false);
+
+
   constructor(private cookieService: CookieService) { }
 
-  @Output () isLogin =  new EventEmitter<boolean>()
+  ngOnInit(): void {
+    // this.isLogin.emit(false)
+  }
 
   isLoggedIn(): boolean {
     const token = this.cookieService.get('authToken');
@@ -18,7 +23,7 @@ export class AuthService {
 
   isTokenValid(token: string): boolean {
     if (!token) {
-      this.isLogin.emit(true)
+      this.isLogin.emit(false)
       return false;
     }
 
@@ -29,7 +34,12 @@ export class AuthService {
   }
 
   public getToken(): string {
-    this.isLogin.emit(true)
+    if(this.cookieService.get('authToken')){
+      this.isLogin.emit(true)
+    }
+    else{
+      this.isLogin.emit(false)
+    }
     return this.cookieService.get('authToken');
   }
 

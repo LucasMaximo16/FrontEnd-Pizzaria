@@ -19,10 +19,11 @@ export class CategoriaComponent implements OnInit {
 
   insertCategoria(name:string){
     this.api.createCategory(name).subscribe(result => {
+      console.log(result);
       if(result){
         this.messageService.add({ severity: 'success', summary: 'Success:', detail: 'Categoria cadastrada com sucesso' });
       }else{
-        this.messageService.add({ severity: 'error', summary: 'Erro:', detail: 'Erro ao cadastrar a categorian' });
+        this.messageService.add({ severity: 'error', summary: 'Erro:', detail: 'Erro ao cadastrar a categoria' });
       }
       console.log(result);
     })

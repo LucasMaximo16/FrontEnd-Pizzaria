@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { OrderComponent } from './pages/order/order.component';
@@ -21,12 +21,13 @@ import { CookieService } from 'ngx-cookie-service';
 import { ModalFinalizarPedidoComponent } from './components/modal/modalFinalizarPedido/modal-finalizar-pedido/modal-finalizar-pedido.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MessagesModule } from 'primeng/messages';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { ProductComponent } from './pages/product/product.component';
 import { CategoriaComponent } from './pages/categoria/categoria.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -59,11 +60,12 @@ import { CategoriaComponent } from './pages/categoria/categoria.component';
     DialogModule,
     DividerModule,
     BrowserAnimationsModule,
+    ConfirmDialogModule,
   ],
   exports: [
     LoginComponent,
   ],
-  providers: [CookieService, LoginComponent, OrderDetailComponent, MessagesModule, MessageService],
+  providers: [CookieService, LoginComponent, OrderDetailComponent, MessagesModule, MessageService, ConfirmationService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

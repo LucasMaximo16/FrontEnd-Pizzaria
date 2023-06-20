@@ -1,9 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ProductDTO } from 'src/app/DTO/Product.dto';
 import { CarrinhoServiceService } from 'src/app/service/CarrinhoService/carrinho-service.service';
 import { ApiService } from 'src/app/service/api.service';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 interface Product {
   id:string
@@ -33,7 +35,9 @@ export class HomeComponent implements OnInit {
   constructor(private api: ApiService,
               private carrinhoService: CarrinhoServiceService,
               private route: ActivatedRoute,
-              private router: Router
+              private router: Router,
+              private messageService: MessageService,
+              private confirmationService: ConfirmationService
               ) { }
 
   ngOnInit() {
@@ -66,16 +70,19 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
-  // adicionarItemAoCarrinho(item: Product) {
-  //   console.log(item);
-  //   const mesaId = this.route.snapshot.params['id'];
-  //   this.carrinhoService.adicionarItem(mesaId, item.id, 1).subscribe((response: any) => {
-  //     console.log(response);
-  //     const itensAtuais = this.carrinhoService.getItensCarrinho();
-  //     this.itensCarrinho.next([...itensAtuais, item]);
-  //   });
-  // }
+  deletarMesa(){
+    this.api.fecharMesa(this.orderId).subscribe(response => {
+      console.log("id AQUII",this.orderId);
+      console.log("response", response);
+      if(response.id == this.orderId){
+        this.messageService.add({ severity: 'success', summary: 'Success:', detail: 'Pedido Deletado' });
+        this.router.navigate(['/'])
+      }
+      else{
+        this.messageService.add({ severity: 'error', summary: 'Erro:', detail: 'Erro ao cadastrar a categoria' });
+      }
+    })
+  }
 
   adicionarItem(item: Product) {
     console.log(item);
@@ -89,5 +96,26 @@ export class HomeComponent implements OnInit {
 
   selecionarItem() {
     this.itemSelected.emit(true);
+  }
+  confirm1() {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja Deletar a mesa ?',
+      header: 'DELETAR MESA',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.deletarMesa();
+        this.messageService.add({ severity: 'Success', summary: 'Deletado', detail: 'Mesa Deletada com sucesso' });
+      },
+      reject: (type: ConfirmEventType) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            // this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+            break;
+          case ConfirmEventType.CANCEL:
+            // this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'You have cancelled' });
+            break;
+        }
+      }
+    });
   }
 }

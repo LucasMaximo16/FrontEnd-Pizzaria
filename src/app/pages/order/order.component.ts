@@ -1,3 +1,4 @@
+import { DatePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { Socket, io } from "socket.io-client";
 import { ItemCarrinhoDTO } from "src/app/DTO/itensCarrinho.dto";
@@ -23,7 +24,8 @@ export class OrderComponent implements OnInit {
 
   constructor(
     private pedidoSerivice: PedidoServiceService,
-    private api: ApiService
+    private api: ApiService,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +52,11 @@ export class OrderComponent implements OnInit {
     });
 
     this.api.getMesas().subscribe(response => {
-      console.log(response);
+      console.log("response", response);
+      response.forEach((order) => {
+        const createdAt = new Date(order.created_at);
+        order.createdAtFormatted = this.datePipe.transform(createdAt, 'dd/MM/yyyy HH:mm:ss');
+      });
       this.orders = response;
     });
   }

@@ -12,7 +12,7 @@ import { MessageService } from 'primeng/api';
 })
 export class LoginComponent implements OnInit {
 
-  @Output() mostrarEventoEmiter =  new EventEmitter<boolean>()
+  @Output() mostrarEventoEmiter = new EventEmitter<boolean>(false);
 
   loginDTO: LoginDTO = { email: '', password: '', token:'' };
   constructor(private authService: AuthService,
